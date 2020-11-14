@@ -11,14 +11,14 @@
 
 #. Выполнить миграции
 
-    ./trends/manage.py makemigrations
+    python ./trends/manage.py makemigrations
 
-    ./trends/manage.py migrate
+    python ./trends/manage.py migrate
 
 #. Создать суперпользователя
 
-   ./trends/manage.py createsuperuser
+   python ./trends/manage.py createsuperuser
 
 #. Запуск проекта
 
-   ./trends/manage.py runserver
+   python ./trends/manage.py runserver
