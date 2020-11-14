@@ -17,8 +17,8 @@
 
 #. Создать суперпользователя
 
-   python ./trends/manage.py createsuperuser
+    python ./trends/manage.py createsuperuser
 
 #. Запуск проекта
 
-   python ./trends/manage.py runserver
+    python ./trends/manage.py runserver
