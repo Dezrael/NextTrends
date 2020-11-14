@@ -1,0 +1,108 @@
+{% extends './layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="n_content" id="statApp">
+    <ul class="nav nav-tabs justify-content-center:" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">Общие сведения</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="rated-tab" data-toggle="tab" href="#rated" role="tab" aria-controls="rated" aria-selected="false">Наиболее востребованные профессии</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="losing-tab" data-toggle="tab" href="#losing" role="tab" aria-controls="losing" aria-selected="false">Наименее востребованные професии</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" id="more-tab" data-toggle="tab" href="#more" role="tab" aria-controls="more" aria-selected="false">Подробная статистика</a>
+        </li> -->
+    </ul>
+    <div id="stat">
+        <div id="tabs">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Коэфициент роста</th>
+                                <th scope="col">Профессия</th>
+                                <th scope="col">Частота упоминаний</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for = "prof in profs" class="hover_th" v-on:click="selectProfession(prof.name)">
+                                <th scope="row">{* prof.rating *}</th>
+                                <td>{* prof.coeff *}</td>
+                                <td>{* prof.name *}</td>
+                                <td>{* prof.frequencies_count *}</td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="rated" role="tabpanel" aria-labelledby="rated-tab">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Коэфициент роста</th>
+                                <th scope="col">Профессия</th>
+                                <th scope="col">Частота упоминаний</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for = "prof in top_profs" class="hover_th" v-on:click="selectProfession(prof.name)">
+                                <th scope="row">{* prof.rating *}</th>
+                                <td>{* prof.coeff *}</td>
+                                <td>{* prof.name *}</td>
+                                <td>{* prof.frequencies_count *}</td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="losing" role="tabpanel" aria-labelledby="losing-tab">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Коэфициент роста</th>
+                                <th scope="col">Профессия</th>
+                                <th scope="col">Частота упоминаний</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for = "prof in under_profs" class="hover_th" v-on:click="selectProfession(prof.name)">
+                                <th scope="row">{* prof.rating *}</th>
+                                <td>{* prof.coeff *}</td>
+                                <td>{* prof.name *}</td>
+                                <td>{* prof.frequencies_count *}</td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+                <!-- <div class="tab-pane fade" id="more" role="tabpanel" aria-labelledby="more-tab">
+                    Подробная статистика
+                </div> -->
+            </div>
+            <div class="export">
+                <button class="btn" id="exportBtn" v-on:click="exportCSV">Экспорт в CSV</button>
+            </div>
+        </div>
+        <div id="professionStat">
+            <div class="m_graph">
+                <h4>Соотношение профессий</h4>
+                <canvas id="relationsChart" width="600" height="400"></canvas>
+            </div>
+            <div class="m_graph">
+                <h4>{* selected_prof.name *}</h4>
+                <canvas id="professionChart" width="600" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/lodash.js' %}"></script>
+<script src="{% static 'js/main/home-vue.js' %}"></script>
+{% endblock script %}

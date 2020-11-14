@@ -1,0 +1,182 @@
+.n_content {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+#stat {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    #professionStat {
+        h4 {
+            text-align: center;
+        }
+    }
+}
+
+.hover_th {
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+}
+
+canvas {
+    margin-bottom: 50px;
+}
+
+.admin_tools {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    a.btn {
+        font-size: 20px;
+    }
+}
+
+.back_banner {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 490px;
+    background: linear-gradient(270deg, #69C54D 0%, rgba(105, 197, 77, 0) 100%), #25AC73;
+    z-index: -1;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link:hover {
+    border: none;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    border: 1px solid #FFFFFF;
+    border-radius: 24px;
+}
+
+.nav-tabs .nav-item {
+    margin: 20px;
+    background-color: transparent;
+    border-radius: 24px;
+
+    .nav-link {
+        background-color: transparent;
+        color: white;
+    }
+
+    &:hover {
+        background:rgba(255, 255, 255, 0.15);
+    }
+
+    &:active {
+        border: 1px solid #FFFFFF;
+        border-radius: 24px;
+    }
+}
+
+#myTab {
+    display: flex;
+    justify-content: center;
+    border: none;
+}
+
+.table {
+    min-height: 600px;
+    background-color: white;
+    padding: 50px 100px;
+    border-collapse: initial;
+    border-radius: 10px;
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+#professionStat .m_graph {
+    margin: 0 40px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+#m_graph {
+    margin-top: 20px !important; 
+}
+
+#relationsChart {
+    margin-top: 20px !important;
+    width: 562.5px !important;
+    height: 375px !important;
+}
+
+.export {
+    display: flex;
+    justify-content: center;
+
+    #exportBtn {
+        background: #69C54D;
+        border-radius: 35px;
+        color: white;
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+}
+
+.table thead th {
+    border-bottom: none !important;
+}
+
+.admin_tools {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.admBtn {
+    margin-top: 20px;
+    background: #69C54D;
+    border-radius: 35px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+.admin_model {
+    display: flex;
+    justify-content: center;
+    form {
+        margin-top: 100px;
+        background-color: white;
+        padding: 40px 100px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        p {
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        input, select {
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 20px;
+            border: 1px solid black;
+        }
+
+        #submitBtn {
+            margin-top: 20px;
+            background: #69C54D;
+            border-radius: 35px;
+            color: white;
+            padding: 20px 0;
+            font-size: 24px;
+            border: none !important;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{% extends './layout.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="n_content admin_model">
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Параметры модели</h1>
+        <p>Количество месяцев: </p> <input type="number" name="months" id="months" value="{{ settings.months_count }}" min="1" max = "24" required>
+        
+        <p>Тип регрессии: </p>
+        <select name="r_type" id="r_type">
+            <option value="linear">Линейная</option>
+            <option value="poly">Полиномиальная</option>
+            <option value="sigmoid">Сигмоидальная</option>
+            <option value="rbf">RBF</option>
+        </select>
+        
+        <p>Epsilon: </p><input type="text" name="epsilon" id="epsilon" value="{{ settings.epsilon }}" required>
+        
+        <p>Параметр регуляризации: </p> <input type="number" name="C_param" id="C_param" value="{{ settings.C }}" min="1" max = "10000" required>
+        
+        <hr>
+        <input type="submit" value="Пересчитать данные" id="submitBtn"></input>
+    </form>
+</div>
+
+
+{% else %}
+<h1>403 Forbidden</h1>
+{% endif %}
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}

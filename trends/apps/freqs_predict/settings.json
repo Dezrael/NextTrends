@@ -1,0 +1,6 @@
+{
+    "months_count": 24,
+    "kernel": "linear",
+    "C": 1000,
+    "epsilon": 0.001
+}
