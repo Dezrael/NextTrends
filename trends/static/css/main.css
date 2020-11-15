@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+#statApp {
+  padding: 40px;
+}
+
 #stat {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -87,15 +91,23 @@ canvas {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: none;
+  font-size: 20px;
+}
+
+#myTab img {
+  margin: 20px;
 }
 
 .table {
-  min-height: 600px;
   background-color: white;
   padding: 50px 100px;
   border-collapse: initial;
   border-radius: 10px;
+  font-size: 20px;
 }
 
 body {
@@ -103,7 +115,7 @@ body {
 }
 
 #professionStat .m_graph {
-  margin: 0 40px;
+  margin-left: 20px;
   background-color: white;
   border-radius: 10px;
   padding: 20px;
@@ -127,6 +139,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 20px;
 }
 
 .export #exportBtn {
@@ -214,5 +227,136 @@ body {
   font-size: 24px;
   border: none !important;
   cursor: pointer;
+}
+
+#myTabContent {
+  margin-right: 40px;
+}
+
+.advice_banner {
+  margin-right: 40px;
+  padding: 60px 40px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  background-color: white;
+  background-image: url("../img/banner.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: auto 100%;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.advice_banner p {
+  margin-left: 25%;
+  margin-bottom: 0;
+}
+
+.advice_banner p span.bold {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1450px) {
+  #stat {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #myTabContent {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .back_banner {
+    height: 800px;
+  }
+  .table {
+    min-height: 600px;
+    background-color: white;
+    padding: 0;
+    border-collapse: initial;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  .advice_banner {
+    display: none;
+  }
+  #professionStat .m_graph {
+    margin-left: 0;
+  }
+  #relationsChart, #professionChart {
+    min-width: 350px;
+    margin-top: 20px !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+.search_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.search_block input {
+  width: 60%;
+  border-radius: 20px 0 0 20px;
+  padding: 10px 10px;
+  outline: none !important;
+  border: none;
+}
+
+.search_block button {
+  width: 8%;
+  min-width: 100px;
+  background-color: #25AC73;
+  border-radius: 0 20px 20px 0;
+  background-image: url("../img/search_icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  outline: none !important;
+  border: none;
+}
+
+.search_block button:hover {
+  background-color: #209e69;
+}
+
+.search_block button:active {
+  background-color: #118051;
+}
+
+.more_stats {
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.more_stats h4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.more_stats #coeffsChart {
+  min-width: 350px;
+  margin-top: 20px !important;
+  width: 100% !important;
+  height: auto !important;
 }
 /*# sourceMappingURL=main.css.map */

@@ -4,6 +4,7 @@
 {% block content %}
 <div class="n_content" id="statApp">
     <ul class="nav nav-tabs justify-content-center:" id="myTab" role="tablist">
+        <img src="{% static 'img/logo.png' %}" alt="logo" width="157" height="58">
         <li class="nav-item">
             <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">Общие сведения</a>
         </li>
@@ -13,10 +14,14 @@
         <li class="nav-item">
             <a class="nav-link" id="losing-tab" data-toggle="tab" href="#losing" role="tab" aria-controls="losing" aria-selected="false">Наименее востребованные професии</a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" id="more-tab" data-toggle="tab" href="#more" role="tab" aria-controls="more" aria-selected="false">Подробная статистика</a>
-        </li> -->
+        </li>
     </ul>
+    <div class="search_block">
+        <input type="text" id="search_text" name="search_text" placeholder="Введите профессию" v-on:change="searchProfsClicked()">
+        <button v-on:click="searchProfsClicked()"></button>
+    </div>
     <div id="stat">
         <div id="tabs">
             <div class="tab-content" id="myTabContent">
@@ -31,7 +36,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for = "prof in profs" class="hover_th" v-on:click="selectProfession(prof.name)">
+                            <tr v-for = "prof in visible_profs" class="hover_th" v-on:click="selectProfession(prof.name)">
                                 <th scope="row">{* prof.rating *}</th>
                                 <td>{* prof.coeff *}</td>
                                 <td>{* prof.name *}</td>
@@ -80,9 +85,17 @@
                             </tbody>
                     </table>
                 </div>
-                <!-- <div class="tab-pane fade" id="more" role="tabpanel" aria-labelledby="more-tab">
-                    Подробная статистика
-                </div> -->
+                <div class="tab-pane fade" id="more" role="tabpanel" aria-labelledby="more-tab">
+                    <div class="more_stats">
+                        <div class="m_graph">
+                            <h4>Коэффициенты роста</h4>
+                            <canvas id="coeffsChart" width="600" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="advice_banner">
+                <p class="text">За последние <span class="bold">14</span> дней было найдено <span class="bold">156</span> новых запросов по теме <span class="bold">Графический дизайн</span>. Это не соответствует среднему значению по данному запросу за последние несколько месяцев. Советуем иметь в штате не менее <span class="bold">3</span> графических дизайнеров.</p>
             </div>
             <div class="export">
                 <button class="btn" id="exportBtn" v-on:click="exportCSV">Экспорт в CSV</button>

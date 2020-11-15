@@ -9,6 +9,8 @@ const vm = new Vue({
         selected_prof: {},
         selected_profs_freqs: [],
         prof_chart: undefined,
+        search_text: '',
+        visible_profs: [],
     },
     mounted () {
         fetch('/api/v1/get_freqs')
@@ -21,6 +23,7 @@ const vm = new Vue({
         .then(response => response.json())
         .then(data => {
             this.profs = data
+            this.visible_profs = data
             data.reverse()
             this.under_profs = data.slice(0,5)
             this.top_profs = data.reverse().slice(0,5)
@@ -33,8 +36,12 @@ const vm = new Vue({
                 return el.name
             })
 
+            let coefs = this.profs.map(el => {
+                return el.coeff
+            })
+
             let ctx = document.getElementById('relationsChart').getContext('2d');
-            let rel_chart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'pie',
                 data: {
                     labels: names,
@@ -56,9 +63,44 @@ const vm = new Vue({
                     }]
                 }
             });
+
+            let ctx2 = document.getElementById('coeffsChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: names,
+                    datasets: [{
+                        label: 'Коэффициент роста',
+                        data: coefs,
+                        backgroundColor: [
+                            "#9ef3a2",
+                            "#8bd88d",
+                            "#74c778",
+                            "#54bb5a",
+                            "#38ac40",
+                            "#329539",
+                            "#2a8230",
+                            "#0b7a13",
+                            "#014f07",
+                            "#013b05",
+                        ]
+                    }]
+                }
+            });
         })
     },
     methods: {
+        searchProfsClicked: function() {
+            let search_box = document.getElementById('search_text')
+            this.search_text = search_box.value;
+            
+            this.visible_profs = this.profs.filter(el => {
+                return el.name.toLowerCase().includes(this.search_text.toLowerCase())
+            })
+
+            let tab = document.getElementById('general-tab')
+            tab.click()
+        },
         selectProfession: function(name) {
             this.selected_prof = this.profs.find(el => {
                 return el.name == name
